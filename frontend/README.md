@@ -1,16 +1,122 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Segundo Parcial – Aplicaciones Híbridas
 
-Currently, two official plugins are available:
+Aplicación fullstack con gestión de proyectos, tareas e instrucciones diseñada para simular un flujo de trabajo real entre un **Project Manager (PM)** y traductores freelancers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Tecnologías utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### **Frontend**
+- React  
+- React Router  
+- Context API  
+- TailwindCSS  
+- Axios  
 
-## Expanding the ESLint configuration
+### **Backend**
+- Node.js  
+- Express  
+- MongoDB (driver nativo)  
+- JWT  
+- bcrypt  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Autenticación y Roles
+
+El sistema incluye un flujo completo de autenticación:
+
+- Registro y Login  
+- Contraseñas hasheadas con bcrypt  
+- Generación de tokens JWT  
+- Middleware de autenticación  
+- Control de permisos por rol:  
+  - **PM (Project Manager)**  
+  - **Translator**
+
+---
+
+## Funcionalidades del PM (Project Manager)
+
+- Crear proyectos  
+- Editar nombre, descripción y estado  
+- Eliminar proyectos  
+- Ver detalle del proyecto  
+- Crear tareas  
+- Editar tareas (título, descripción, deadline, traductor asignado)  
+- Cambiar estado  
+- Reasignar tareas rechazadas  
+- Eliminar tareas  
+- Gestionar instrucciones (crear, editar, eliminar)
+
+---
+
+## Funcionalidades del Traductor
+
+- Ver únicamente tareas asignadas  
+- Tareas agrupadas por proyecto  
+- Cambiar estado:  
+  - **PENDING → ACCEPTED**  
+  - **PENDING → REJECTED**  
+  - **ACCEPTED → COMPLETED**  
+- Ver fecha de completado  
+- No puede acceder a proyectos ajenos  
+- No puede modificar tareas ajenas  
+- Las tareas rechazadas desaparecen del dashboard
+
+---
+
+## Lógica de estados implementada
+
+### **Traductor**
+- `PENDING → ACCEPTED`  
+- `PENDING → REJECTED` (se desasigna y desaparece)  
+- `ACCEPTED → COMPLETED` (registra fecha)
+
+### **PM**
+- Puede cambiar estados libremente  
+- Puede reasignar tareas cuando están REJECTED  
+
+---
+
+## Protección de rutas
+
+- Validación de JWT en el backend  
+- Verificación por rol  
+- Validación de `ownerId` para PMs  
+- Validación de `assignedTo` para traductores  
+- Las tareas rechazadas no se envían en las solicitudes  
+- Rutas protegidas en frontend con React Router
+
+---
+
+## Informe del parcial
+
+El informe completo del parcial se encuentra en el repositorio como PDF.
+
+---
+
+## Instalación en entorno local
+
+### Backend
+```
+cd backend
+npm install
+npm run dev
+```
+
+### Frontend
+```
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## ✔ Estado del proyecto
+
+**Proyecto finalizado**
+
+---

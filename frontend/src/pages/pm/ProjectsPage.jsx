@@ -132,7 +132,7 @@ export default function ProjectsPage() {
     }
 
     return (
-        <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 px-4 py-8">
+        <div className="min-h-[calc(100vh-3.5rem)] bg-linear-to-br from-slate-950 via-slate-900 to-emerald-950 px-4 py-8">
             <div className="mx-auto max-w-6xl grid gap-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1.1fr)]">
 
                 <section className="rounded-3xl border border-white/10 bg-slate-950/80 p-6 shadow-xl shadow-black/40">
@@ -198,7 +198,7 @@ export default function ProjectsPage() {
 
                         <button
                             type="submit"
-                            className="w-full mt-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-md shadow-emerald-500/40 hover:from-emerald-400 hover:to-sky-400"
+                            className="w-full mt-2 rounded-2xl bg-linear-to-r from-emerald-500 to-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-md shadow-emerald-500/40 hover:from-emerald-400 hover:to-sky-400"
                         >
                             Crear proyecto
                         </button>
